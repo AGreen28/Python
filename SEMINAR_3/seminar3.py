@@ -1,3 +1,4 @@
+'''
 import json
 sp=[5,11,2,3,4,8,157,555]
 
@@ -31,12 +32,12 @@ print(type(BD))
 #for x,y in res[2].items():
  #   print(x,y)
 
-'''
-print(len(rez))
-for x,y in rez.items():
-    print(x,y)
-'''    
 
+#print(len(rez))
+#for x,y in rez.items():
+#    print(x,y)
+    
+'''
 
 '''Задайте список из n чисел ряда фибоначчи
 
@@ -104,3 +105,26 @@ for a,b in bibl.items():
 file.write('\n')
 file.close()
 '''
+
+'''Задайте список из N элементов, заполненных числами из промежутка [-N, N].
+ сохраните список в формате JSON.
+'''
+
+import json
+
+N = int(input('Введите число: '))
+
+def Chislo(N):
+    num = []
+    for i in range(-N, N + 1):
+        num.append(i)
+    return num
+
+with open('data.json', 'w', encoding='utf-8') as fh:  # открываем файл на запись
+    fh.write(json.dumps(Chislo(N), ensure_ascii=False))  # преобразовываем словарь data в unicode-строку и записываем в файл
+print('БД успешно сохранена')
+
+with open('data.json', 'r', encoding='utf-8') as fh:  # открываем файл на чтение
+    BD = json.load(fh)  # загружаем из файла данные в словарь data
+print('БД успещно загружена')
+print(BD)
